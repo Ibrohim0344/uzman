@@ -34,8 +34,6 @@ class _MyActionChipState extends State<MyActionChip> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalizations.of(context);
-
     return SizedBox(
       height: 60,
       child: SingleChildScrollView(

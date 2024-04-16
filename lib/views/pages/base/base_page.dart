@@ -4,8 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../data/tools/bottom_sheets/order_service_sheets.dart';
 import '../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../data/tools/constants/style/fonts.dart';
-import '../../widgets/map/google_map.dart';
-import '../../widgets/open_page.dart';
 import 'main/main_page.dart';
 import 'chats/chats_page.dart';
 import 'orders/orders_page.dart';
