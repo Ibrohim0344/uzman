@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../data/storage/local_storage.dart';
+import '../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../data/tools/constants/strings/strings.dart';
 import '../../../../domains/entities/user/user_local_info.dart';
 import '../../base/base_page.dart';
@@ -15,7 +16,6 @@ import '../widgets/text_between_divider.dart';
 import '../../../../data/tools/constants/style/fonts.dart';
 import '../../../../data/tools/constants/assets/icons.dart';
 import '../../../../data/tools/constants/style/colors.dart';
-import '../../../../data/tools/constants/language/getx_translation.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -124,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,

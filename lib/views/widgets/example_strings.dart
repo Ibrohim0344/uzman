@@ -1,6 +1,6 @@
 import '../../data/tools/constants/assets/icons.dart';
 import '../../data/tools/constants/assets/images.dart';
-import '../../data/tools/constants/language/getx_translation.dart';
+import '../../data/tools/constants/l10n/app_localizations.dart';
 import '../../domains/entities/discount/discount_entity.dart';
 
 List<String> pictures = [
@@ -80,20 +80,20 @@ List<String> dateTime = [
   "Nov 14, 2024",
 ];
 
-List<String> callStatuses = [
-  AppLocalization().incoming,
-  AppLocalization().outgoing,
-  AppLocalization().missed,
-  AppLocalization().outgoing,
-  AppLocalization().incoming,
-  AppLocalization().outgoing,
-  AppLocalization().incoming,
-  AppLocalization().missed,
-  AppLocalization().outgoing,
-  AppLocalization().incoming,
-  AppLocalization().missed,
-  AppLocalization().outgoing,
-];
+List<String> callStatuses(AppLocalizations lang) => [
+      lang.incoming,
+      lang.outgoing,
+      lang.missed,
+      lang.outgoing,
+      lang.incoming,
+      lang.outgoing,
+      lang.incoming,
+      lang.missed,
+      lang.outgoing,
+      lang.incoming,
+      lang.missed,
+      lang.outgoing,
+    ];
 
 List<String> callStatusIcons = [
   KTIcons.incomingCall,

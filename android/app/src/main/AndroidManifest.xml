@@ -4,6 +4,11 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="uzman">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDrr-odP4a4r6wg9-gyoGrsgufpW-eGBpk" />
+
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
@@ -42,6 +47,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <queries>
         <intent>

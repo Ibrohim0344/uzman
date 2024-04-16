@@ -20,10 +20,10 @@ dependencies:
   mask_text_input_formatter: ^2.9.0
   readmore: ^3.0.0
   cached_network_image: ^3.3.1
-  audioplayers: ^6.0.0
 
   # chat
-  chat_bubbles: ^1.6.0
+  chat_bubbles: ^1.5.0
+  audioplayers: ^6.0.0
 
   # carousel
   carousel_slider: ^4.2.1
@@ -33,12 +33,15 @@ dependencies:
   flutter_spinkit: ^5.2.1
 
   # state management
-  get: ^4.6.6
   flutter_bloc: ^8.1.5
   equatable: ^2.0.5
 
   # local storage
   shared_preferences: ^2.2.2
+
+  # location
+  google_maps_flutter: ^2.6.0
+  geolocator: ^11.0.0
 
   # network
   dio: ^5.4.0
@@ -46,6 +49,11 @@ dependencies:
   built_value: ^8.9.0
   json_annotation: ^4.8.1
   rxdart: ^0.27.7
+
+  # localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +71,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/icons/

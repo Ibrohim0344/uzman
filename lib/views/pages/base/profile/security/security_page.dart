@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../widgets/my_list_tile.dart';
 import '../widgets/my_switch.dart';
@@ -20,7 +20,7 @@ class _SecurityPageState extends State<SecurityPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     titles = [
       lang.rememberMe,
       "Face ID",
@@ -51,14 +51,14 @@ class _SecurityPageState extends State<SecurityPage> {
               ),
             ),
             const SizedBox(height: 16),
-            SecurityButton(
+            SecondaryButton(
               lang.changePinCode,
               size.width,
               onPressed: () {},
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
-              child: SecurityButton(
+              child: SecondaryButton(
                 lang.changePassword,
                 size.width,
                 onPressed: () {},

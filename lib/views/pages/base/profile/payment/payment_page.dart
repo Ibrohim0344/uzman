@@ -2,26 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../data/tools/constants/assets/icons.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../widgets/main_button.dart';
+import '../../../../widgets/open_page.dart';
 import '../widgets/contact_button.dart';
 import 'add_new_card/add_new_card.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
 
-  static void addNewCard(context) => Navigator.of(context).push(
-        CupertinoPageRoute(
-          builder: (context) => const AddNewCard(),
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,
@@ -72,7 +67,7 @@ class PaymentPage extends StatelessWidget {
           MainButton(
             lang.addNewCard,
             size.width / 2 + 10,
-            onPressed: () => addNewCard(context),
+            onPressed: () => getTo(context, const AddNewCard()),
             hasElevation: true,
           ),
           const SizedBox(height: 20),

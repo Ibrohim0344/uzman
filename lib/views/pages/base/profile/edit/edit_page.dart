@@ -1,11 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../blocs/user/user_info_bloc.dart';
 import '../../../../../data/storage/local_storage.dart';
 import '../../../../../data/tools/constants/assets/icons.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../../domains/entities/user/user_local_info.dart';
@@ -42,16 +42,16 @@ class _EditPageState extends State<EditPage> {
   }
 
   void updateUserChanges() {
-    final updatedUser = LocalStorage.getUser().copyWith(
-      fullName: nameController.text.trim(),
-      email: emailController.text.trim(),
-      dateOfBirth: birthController.text.trim(),
-      phone: phoneController.text.trim(),
-      gender: gender,
-      address: addressController.text.trim(),
-    );
-    LocalStorage.saveUser(updatedUser);
-    log("=================== $updatedUser ===================");
+    context.read<UserInfoBloc>().add(
+          UpdateUserInfo(
+            fullName: nameController.text.trim(),
+            email: emailController.text.trim(),
+            dateOfBirth: birthController.text.trim(),
+            phone: phoneController.text.trim(),
+            gender: gender,
+            address: addressController.text.trim(),
+          ),
+        );
     Navigator.pop(context);
   }
 
@@ -85,7 +85,7 @@ class _EditPageState extends State<EditPage> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     final size = MediaQuery.sizeOf(context);
     nameController.text = fullName ?? "";
     emailController.text = email ?? "";

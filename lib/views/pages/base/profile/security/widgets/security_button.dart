@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../../data/tools/constants/style/fonts.dart';
 
-class SecurityButton extends StatelessWidget {
+class SecondaryButton extends StatelessWidget {
   final String text;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   final double width;
   final double horizontalPadding;
 
-  const SecurityButton(
+  const SecondaryButton(
     this.text,
     this.width, {
+    required this.onPressed,
     this.horizontalPadding = 0,
-    this.onPressed,
     super.key,
   });
 

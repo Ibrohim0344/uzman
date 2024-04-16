@@ -21,6 +21,7 @@ sealed class KTImages {
   static const discountCard2 = "$assets/$images/im_discount_card2.png";
   static const discountCard3 = "$assets/$images/im_discount_card3.png";
   static const discountCard4 = "$assets/$images/im_discount_card4.png";
+  static const humo = "$assets/$images/im_humo.png";
   static const girlInPhone = "$assets/$images/im_girl_in_phone.png";
   static const videoCall = "$assets/$images/im_video_call.png";
   static const exampleGarageCleaner = "$assets/$images/im_example_garage_cleaner.png";
@@ -33,6 +34,7 @@ sealed class KTImages {
   static const splashWorker1 = "$assets/$images/im_splash_worker1.png";
   static const splashWorker2 = "$assets/$images/im_splash_worker2.png";
   static const splashWorker3 = "$assets/$images/im_splash_worker3.png";
+  static const uzcard = "$assets/$images/im_uzcard.png";
   static const uzman = "$assets/$images/im_uzman.png";
   static const wallPainter = "$assets/$images/im_wall_painter.png";
 }

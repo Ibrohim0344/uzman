@@ -49,18 +49,20 @@ class _ChatState extends State<Chat> {
   String text = "";
 
   @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
     final now = DateTime.now();
     return Scaffold(
       backgroundColor: KTColors.white,
       appBar: AppBar(
         backgroundColor: KTColors.white,
         surfaceTintColor: KTColors.white,
-        title: Text(
-          widget.user!.userName,
-          style: ktButtonTextStyle.copyWith(fontSize: width < 391 ? 22 : 24),
-        ),
+        title: Text(widget.title ?? "Jenny Wilson"),
       ),
       body: Stack(
         children: [
@@ -74,17 +76,17 @@ class _ChatState extends State<Chat> {
                   tail: true,
                   delivered: true,
                 ),
-                // BubbleNormalAudio(
-                //   color: const Color(0xFFE8E8EE),
-                //   duration: duration.inSeconds.toDouble(),
-                //   position: position.inSeconds.toDouble(),
-                //   isPlaying: isPlaying,
-                //   isLoading: isLoading,
-                //   isPause: isPause,
-                //   onSeekChanged: _changeSeek,
-                //   onPlayPauseButtonClick: _playAudio,
-                //   sent: true,
-                // ),
+                BubbleNormalAudio(
+                  color: const Color(0xFFE8E8EE),
+                  duration: duration.inSeconds.toDouble(),
+                  position: position.inSeconds.toDouble(),
+                  isPlaying: isPlaying,
+                  isLoading: isLoading,
+                  isPause: isPause,
+                  onSeekChanged: _changeSeek,
+                  onPlayPauseButtonClick: _playAudio,
+                  sent: true,
+                ),
                 BubbleNormal(
                   text: 'bubble normal with tail',
                   time: "10:00",
@@ -202,7 +204,7 @@ class _ChatState extends State<Chat> {
 
   void _playAudio() async {
     const url =
-        'https://file-examples.com/storage/fef1706276640fa2f99a5a4/2017/11/file_example_MP3_700KB.mp3';
+        'https://onlinetestcase.com/wp-content/uploads/2023/06/500-KB-MP3.mp3';
     if (isPause) {
       await audioPlayer.resume();
       setState(() {
@@ -222,6 +224,7 @@ class _ChatState extends State<Chat> {
       await audioPlayer.play(UrlSource(url));
       setState(() {
         isPlaying = true;
+        // isLoading = false;
       });
     }
 
@@ -232,9 +235,11 @@ class _ChatState extends State<Chat> {
       });
     });
     audioPlayer.onPositionChanged.listen((Duration p) {
-      setState(() {
-        position = p;
-      });
+      if (mounted) {
+        setState(() {
+          position = p;
+        });
+      }
     });
     audioPlayer.onPlayerComplete.listen((event) {
       setState(() {

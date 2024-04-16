@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../data/tools/constants/assets/icons.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../widgets/open_page.dart';
 import '../../../../widgets/worker_card.dart';
@@ -14,7 +14,7 @@ class PopularServicesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,
@@ -36,7 +36,7 @@ class PopularServicesPage extends StatelessWidget {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          const MyActionChip(),
+          MyActionChip(lang),
           ...List.generate(
             10,
             (index) => const WorkerCard(),

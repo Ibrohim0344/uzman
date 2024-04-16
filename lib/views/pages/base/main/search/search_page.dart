@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../data/tools/constants/assets/icons.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../orders/widgets/title_and_textbutton.dart';
@@ -32,7 +32,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,

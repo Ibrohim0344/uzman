@@ -1,21 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../data/storage/local_storage.dart';
 import '../../../../../data/tools/constants/assets/icons.dart';
 import '../../../../../data/tools/constants/assets/images.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../../data/tools/extensions/int_extensions.dart';
-import '../../../../widgets/main_button.dart';
-import '../../../../widgets/my_rating_chip.dart';
-import '../../../../widgets/open_page.dart';
-import '../../chats/chat/chat_detail.dart';
+import '../../pages/base/chats/chat/chat_detail.dart';
+import '../main_button.dart';
+import '../my_rating_chip.dart';
+import '../open_page.dart';
 import 'widgets/photos_from_work.dart';
 import 'widgets/comment.dart';
 
@@ -27,7 +24,7 @@ class WorkerDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     final safePadding = MediaQuery.of(context).padding.top;
 
     return Scaffold(
@@ -231,7 +228,7 @@ class WorkerDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const MyRatingChip(hasHorizontalGap: false),
+                      MyRatingChip(lang, hasHorizontalGap: false),
                       PeoplesComment(
                         avatar: KTImages.girlInPhone,
                         fullName: LocalStorage.getUser().fullName ?? "Nigina",
@@ -285,7 +282,7 @@ class WorkerDetailPage extends StatelessWidget {
                 child: MainButton(
                   lang.message,
                   size.width,
-                  onPressed: () {},
+                  onPressed: () => getTo(context, Chat()),
                 ),
               ),
             ),

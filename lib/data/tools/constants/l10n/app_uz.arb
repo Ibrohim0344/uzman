@@ -1,4 +1,4 @@
-const langUz = {
+{
   "splashText1": "Biz do'stona narxda professional xizmat ko'rsatamiz",
   "splashText2": "Eng yaxshi natijalar va sizning mamnunligimiz bizning ustuvor vazifamizdir",
   "splashText3": "Uyingizda ajoyib o'zgarishlar qilaylik",
@@ -17,7 +17,7 @@ const langUz = {
   "password": "Parol",
   "confirmPassword": "Parolni tasdiqlang",
   "remember": "Eslab qolish",
-  "continue": "Davom etish",
+  "continueWord": "Davom etish",
   "enter": "Kirish",
   "forgotPassword": "Parolni unutdingizmi",
   "chooseResetPasswordOption": "Parolni tiklash uchun qaysi kontakt ma'lumotlaridan foydalanishimiz kerakligini tanlang",
@@ -155,5 +155,5 @@ const langUz = {
   "customerService": "Mijozlarga xizmat ko'rsatish",
   "webSite": "Veb-sayt",
   "sureLogout": "Haqiqatan ham tizimdan chiqmoqchimisiz?",
-  "yesLogout": "Ha, chiqish",
-};
+  "yesLogout": "Ha, chiqish"
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../widgets/example_strings.dart';
 import 'widgets/invite_list_tile.dart';
@@ -10,7 +10,7 @@ class InviteFriends extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,

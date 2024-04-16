@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../data/tools/bottom_sheets/cancellation_sheets.dart';
 import '../../../../../data/tools/constants/assets/icons.dart';
 import '../../../../../data/tools/constants/assets/images.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../../data/tools/extensions/int_extensions.dart';
@@ -30,7 +31,7 @@ class _WorkStatusCardState extends State<WorkStatusCard> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -93,7 +94,7 @@ class _WorkStatusCardState extends State<WorkStatusCard> {
                               color: switch (widget.status) {
                                 WorkStatus.upcoming => KTColors.orange,
                                 WorkStatus.completed => KTColors.green,
-                                WorkStatus.canceled => KTColors.red,
+                                WorkStatus.canceled => KTColors.mainRed,
                               },
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8)),
@@ -197,12 +198,37 @@ class _WorkStatusCardState extends State<WorkStatusCard> {
                           ),
                         ),
                         12.gapY(),
-                        MainButton(
-                          lang.viewViaGoogle,
-                          size.width,
-                          height: 40,
-                          onPressed: () {},
-                        ),
+                        widget.status == WorkStatus.upcoming
+                            ? Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MainButton(
+                                    lang.cancel,
+                                    size.width / 2 - 32,
+                                    height: 36,
+                                    onPressed: () =>
+                                        CancellationSheets.cancelBookingSheet(
+                                            context, size),
+                                    isOutlined: true,
+                                    fontSize: 14,
+                                  ),
+                                  MainButton(
+                                    lang.viewViaGoogle,
+                                    size.width / 2 - 32,
+                                    height: 36,
+                                    onPressed: () {},
+                                    fontSize: 14,
+                                  ),
+                                ],
+                              )
+                            : MainButton(
+                                lang.viewViaGoogle,
+                                size.width,
+                                height: 36,
+                                onPressed: () {},
+                                fontSize: 14,
+                              ),
                       ],
                     ),
                   ),

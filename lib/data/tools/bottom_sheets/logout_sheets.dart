@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../views/widgets/my_button.dart';
+import '../../../views/pages/auth/auth_page.dart';
+import '../../../views/pages/base/profile/security/widgets/security_button.dart';
+import '../../../views/widgets/main_button.dart';
 import '../../storage/local_storage.dart';
+import '../constants/l10n/app_localizations.dart';
 import '../constants/style/fonts.dart';
 import '../constants/style/colors.dart';
-import '../../../views/pages/auth/auth_page.dart';
-import '../constants/language/getx_translation.dart';
 
 abstract class LogoutSheets {
   static Future logoutSheet(BuildContext context, Size size) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return showModalBottomSheet(
       context: context,
@@ -54,9 +55,11 @@ abstract class LogoutSheets {
                     style: ktBodyMediumStyle,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      MyButton(
+                      SecondaryButton(
+                        lang.yesLogout,
+                        size.width / 2 - 24,
                         onPressed: () {
                           Navigator.pop(context);
                           LocalStorage.deleteUser();
@@ -67,17 +70,13 @@ abstract class LogoutSheets {
                             (route) => false,
                           );
                         },
-                        color: KTColors.secondaryLightBlue,
-                        text: lang.yesLogout,
-                        textColor: KTColors.mainRed,
-                        size: const Size(160, 50),
                       ),
-                      MyButton(
+                      MainButton(
+                        lang.cancel,
+                        size.width / 2 - 24,
+                        hasElevation: true,
+                        fontSize: 15,
                         onPressed: () => Navigator.pop(context),
-                        color: KTColors.mainRed,
-                        text: lang.cancel,
-                        size: const Size(160, 50),
-                        elevation: 5,
                       ),
                     ],
                   ),

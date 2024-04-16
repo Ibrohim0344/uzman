@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../blocs/language/language_bloc.dart';
 import '../../../../../data/storage/local_storage.dart';
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
-
-// final languageController = Get.put(LocalizationGetXController());
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({super.key});
@@ -28,8 +27,7 @@ class _LanguagePageState extends State<LanguagePage> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
-    // final locale = languageController;
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,
@@ -49,9 +47,8 @@ class _LanguagePageState extends State<LanguagePage> {
             value: values[index],
             groupValue: groupValue,
             onChanged: (value) {
-              // locale.changeLanguage(value!);
-              Get.updateLocale(Locale(value!));
-              groupValue = value;
+              groupValue = value!;
+              context.read<LanguageBloc>().add(ChangeLanguage(value));
             },
           ),
         ),

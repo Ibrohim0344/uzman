@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../views/pages/base/main/widgets/my_action_chip.dart';
-import '../../../views/widgets/my_button.dart';
+import '../../../views/pages/base/profile/security/widgets/security_button.dart';
+import '../../../views/widgets/main_button.dart';
 import '../../../views/widgets/my_rating_chip.dart';
+import '../constants/l10n/app_localizations.dart';
 import '../constants/style/fonts.dart';
 import '../constants/style/colors.dart';
-import '../constants/language/getx_translation.dart';
 
 abstract class FilterSheets {
   static Future filterSheet(BuildContext context, Size size) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return showModalBottomSheet(
       context: context,
@@ -22,7 +23,6 @@ abstract class FilterSheets {
       useSafeArea: true,
       enableDrag: true,
       builder: (context) {
-        categories[0].isSelected = true;
         return ColoredBox(
           color: KTColors.white,
           child: SizedBox(
@@ -51,27 +51,25 @@ abstract class FilterSheets {
                     color: KTColors.border,
                   ),
                   title(lang.category),
-                  const MyActionChip(),
+                  MyActionChip(lang),
                   title(lang.price),
                   const MyRangeSlider(),
                   title(lang.rating),
-                  const MyRatingChip(),
+                  MyRatingChip(lang),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      MyButton(
+                      SecondaryButton(
+                        lang.reset,
+                        size.width / 2 - 24,
                         onPressed: () => Navigator.pop(context),
-                        color: KTColors.secondaryLightBlue,
-                        text: lang.reset,
-                        textColor: KTColors.mainRed,
-                        size: const Size(160, 50),
                       ),
-                      MyButton(
+                      MainButton(
+                        lang.filter,
+                        size.width / 2 - 24,
+                        hasElevation: true,
+                        fontSize: 15,
                         onPressed: () => Navigator.pop(context),
-                        color: KTColors.mainRed,
-                        text: lang.filter,
-                        size: const Size(160, 50),
-                        elevation: 5,
                       ),
                     ],
                   ),

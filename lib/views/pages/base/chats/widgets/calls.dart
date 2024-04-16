@@ -1,10 +1,11 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../data/tools/constants/assets/icons.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../widgets/example_strings.dart';
+import '../../../../widgets/open_page.dart';
 import '../call/call_page.dart';
 
 class Calls extends StatelessWidget {
@@ -12,6 +13,9 @@ class Calls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lang = AppLocalizations.of(context);
+    final getCallStatuses = callStatuses(lang);
+
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: List.generate(
@@ -20,7 +24,7 @@ class Calls extends StatelessWidget {
           picture: pictures[index],
           title: titles[index],
           callStatusIcon: callStatusIcons[index],
-          callStatus: callStatuses[index],
+          callStatus: getCallStatuses[index],
           dateTime: dateTime[index],
         ),
       ),
@@ -73,7 +77,7 @@ class CallUser extends StatelessWidget {
           ],
         ),
         trailing: GestureDetector(
-          onTap: () => Get.to(() => const CallPage()),
+          onTap: () => getTo(context, const CallPage()),
           child: SvgPicture.asset(KTIcons.phoneRed),
         ),
       ),

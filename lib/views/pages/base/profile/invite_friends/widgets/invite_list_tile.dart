@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../../data/tools/constants/style/fonts.dart';
 
@@ -21,12 +21,13 @@ class InviteListTile extends StatefulWidget {
 }
 
 class _InviteListTileState extends State<InviteListTile> {
-  String invited = AppLocalization().invite;
+  String invited = "";
   bool isInvited = false;
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
+    invited = lang.invite;
     return ListTile(
       leading: CircleAvatar(
         radius: 25,

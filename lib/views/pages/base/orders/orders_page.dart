@@ -1,20 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../data/tools/constants/assets/icons.dart';
-import '../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../data/tools/constants/style/colors.dart';
 import '../../../../data/tools/constants/style/fonts.dart';
-import 'widgets/canceled.dart';
-import 'widgets/completed.dart';
-import 'widgets/upcoming.dart';
+import '../../../widgets/open_page.dart';
+import '../main/search/search_page.dart';
+import 'tabviews/canceled.dart';
+import 'tabviews/completed.dart';
+import 'tabviews/upcoming.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return DefaultTabController(
       length: 3,
@@ -28,9 +31,12 @@ class OrdersPage extends StatelessWidget {
             style: ktBodyLargeStyle,
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: SvgPicture.asset(KTIcons.searchBlack),
+            GestureDetector(
+              onTap: () => getTo(context, const SearchPage()),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: SvgPicture.asset(KTIcons.searchBlack),
+              ),
             ),
           ],
           bottom: TabBar(
@@ -57,7 +63,7 @@ class OrdersPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: TabBarView(
             children: [
-              Upcoming(upcomingBookings: []),
+              Upcoming(upcomingBookings: [0]),
               Completed(),
               Canceled(),
             ],

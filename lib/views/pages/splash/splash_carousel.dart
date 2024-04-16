@@ -1,14 +1,14 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../data/tools/constants/l10n/app_localizations.dart';
+import '../../widgets/open_page.dart';
 import '../auth/auth_page.dart';
 import '../../widgets/main_button.dart';
 import '../../../data/tools/constants/style/fonts.dart';
 import '../../../data/tools/constants/style/colors.dart';
 import '../../../data/tools/constants/assets/images.dart';
-import '../../../data/tools/constants/language/getx_translation.dart';
 
 class SplashCarousel extends StatefulWidget {
   const SplashCarousel({super.key});
@@ -31,7 +31,7 @@ class _SplashCarouselState extends State<SplashCarousel> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     carouselTexts = [lang.splashText1, lang.splashText2, lang.splashText3];
 
     return Scaffold(
@@ -124,7 +124,7 @@ class _SplashCarouselState extends State<SplashCarousel> {
                   child: MainButton(
                     lang.start,
                     size.width - 36,
-                    onPressed: () => Get.to(() => const AuthPage()),
+                    onPressed: () => getTo(context, const AuthPage()),
                   ),
                 ),
               ),

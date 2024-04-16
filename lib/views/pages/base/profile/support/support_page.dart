@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../data/tools/constants/language/getx_translation.dart';
 import '../../../../../data/tools/constants/assets/icons.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../main/widgets/my_search_field.dart';
@@ -63,7 +63,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return DefaultTabController(
       length: 2,
@@ -102,7 +102,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
               ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  const MyActionChip(),
+                  MyActionChip(lang),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,

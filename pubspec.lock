@@ -221,10 +221,10 @@ packages:
     dependency: "direct main"
     description:
       name: chat_bubbles
-      sha256: "9ee1493b31a7f847363c5d69725ec55db94f720c7c116d403b4d322a4da0f08c"
+      sha256: "16b4d0f575fbd80ef7a687d6e63c56c23137c660f6de7884507c55e255ef2920"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.0"
+    version: "1.5.0"
   checked_yaml:
     dependency: transitive
     description:
@@ -281,6 +281,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: "706b5707578e0c1b4b7550f64078f0a0f19dec3f50a178ffae7006b0a9ca58fb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -406,6 +414,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -464,14 +477,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
-  get:
+  geolocator:
     dependency: "direct main"
     description:
-      name: get
-      sha256: e4e7335ede17452b391ed3b2ede016545706c01a02292a6c97619705e7d2a85e
+      name: geolocator
+      sha256: "694ec58afe97787b5b72b8a0ab78c1a9244811c3c10e72c4362ef3c0ceb005cd"
       url: "https://pub.dev"
     source: hosted
-    version: "4.6.6"
+    version: "11.0.0"
+  geolocator_android:
+    dependency: transitive
+    description:
+      name: geolocator_android
+      sha256: f15d1536cd01b1399578f1da1eb5d566e7a718db6a3648f2c24d2e2f859f0692
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.4"
+  geolocator_apple:
+    dependency: transitive
+    description:
+      name: geolocator_apple
+      sha256: bc2aca02423ad429cb0556121f56e60360a2b7d694c8570301d06ea0c00732fd
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.7"
+  geolocator_platform_interface:
+    dependency: transitive
+    description:
+      name: geolocator_platform_interface
+      sha256: "009a21c4bc2761e58dccf07c24f219adaebe0ff707abdfd40b0a763d4003fab9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.2"
+  geolocator_web:
+    dependency: transitive
+    description:
+      name: geolocator_web
+      sha256: "49d8f846ebeb5e2b6641fe477a7e97e5dd73f03cbfef3fd5c42177b7300fb0ed"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
+  geolocator_windows:
+    dependency: transitive
+    description:
+      name: geolocator_windows
+      sha256: "53da08937d07c24b0d9952eb57a3b474e29aae2abf9dd717f7e1230995f13f0e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3"
   glob:
     dependency: transitive
     description:
@@ -480,6 +533,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  google_maps:
+    dependency: transitive
+    description:
+      name: google_maps
+      sha256: "47eef3836b49bb030d5cb3afc60b8451408bf34cf753e571b645d6529eb4251a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.1.0"
+  google_maps_flutter:
+    dependency: "direct main"
+    description:
+      name: google_maps_flutter
+      sha256: "982c2e22ec78d32701bfbd351311e8579a4952035381ac66462c0af11003107b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.0"
+  google_maps_flutter_android:
+    dependency: transitive
+    description:
+      name: google_maps_flutter_android
+      sha256: "256b3c974e415bd17555ceff76a5d0badd2cbfd29febfc23070993358f639550"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
+  google_maps_flutter_ios:
+    dependency: transitive
+    description:
+      name: google_maps_flutter_ios
+      sha256: "6c50bce26ff73079b4401de5bfe77e89d89138897b9dcc6bdfbc7ada842f2bc1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.2"
+  google_maps_flutter_platform_interface:
+    dependency: transitive
+    description:
+      name: google_maps_flutter_platform_interface
+      sha256: "167af879da4d004cd58771f1469b91dcc3b9b0a2c5334cc6bf71fd41d4b35403"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.0"
+  google_maps_flutter_web:
+    dependency: transitive
+    description:
+      name: google_maps_flutter_web
+      sha256: "861c6dd430123e58bb1154342345c5bfa36064120c8ec3dbc0d0b7522add1861"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.6+2"
   graphs:
     dependency: transitive
     description:
@@ -488,6 +589,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      sha256: "3a7812d5bcd2894edf53dfaf8cd640876cf6cef50a8f238745c8b8120ea74d3a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.4"
   http:
     dependency: transitive
     description:
@@ -601,13 +710,13 @@ packages:
     source: hosted
     version: "0.2.1+1"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.0"
+    version: "0.18.1"
   io:
     dependency: transitive
     description:
@@ -624,6 +733,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
+  js_wrapping:
+    dependency: transitive
+    description:
+      name: js_wrapping
+      sha256: e385980f7c76a8c1c9a560dfb623b890975841542471eade630b2871d243851c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4"
   json_annotation:
     dependency: "direct main"
     description:
@@ -904,6 +1021,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  sanitize_html:
+    dependency: transitive
+    description:
+      name: sanitize_html
+      sha256: "12669c4a913688a26555323fb9cec373d8f9fbe091f2d01c40c723b33caa8989"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   shared_preferences:
     dependency: "direct main"
     description:

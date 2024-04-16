@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 import '../../../../../data/tools/constants/assets/icons.dart';
 import '../../../../../data/tools/constants/assets/images.dart';
@@ -15,7 +13,8 @@ class CallPage extends StatefulWidget {
 }
 
 class _CallPageState extends State<CallPage> {
-  void endCall() => Get.back();
+  void endCall() => Navigator.pop(context);
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);

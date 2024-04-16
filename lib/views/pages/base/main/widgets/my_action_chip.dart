@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../domains/entities/category/category_entity.dart';
 
 class MyActionChip extends StatefulWidget {
-  const MyActionChip({super.key});
+  final AppLocalizations lang;
+
+  const MyActionChip(this.lang, {super.key});
 
   @override
   State<MyActionChip> createState() => _MyActionChipState();
 }
 
 class _MyActionChipState extends State<MyActionChip> {
+  List<CategoryEntity> categories = [];
+
   void selectCategories(List categories, int value) {
     for (int i = 0; i < categories.length; i++) {
       i == value
@@ -23,16 +27,15 @@ class _MyActionChipState extends State<MyActionChip> {
 
   @override
   void initState() {
-    for (int i = 0; i < categories.length; i++) {
-      i == 0
-          ? categories[i].isSelected = true
-          : categories[i].isSelected = false;
-    }
+    categories = workCategories(widget.lang);
+    categories.first.isSelected = true;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final lang = AppLocalizations.of(context);
+
     return SizedBox(
       height: 60,
       child: SingleChildScrollView(
@@ -76,14 +79,12 @@ class _MyActionChipState extends State<MyActionChip> {
   }
 }
 
-final lang = AppLocalization();
-
-List<CategoryEntity> categories = [
-  CategoryEntity(categoryName: lang.all),
-  CategoryEntity(categoryName: lang.cleaning),
-  CategoryEntity(categoryName: lang.repair),
-  CategoryEntity(categoryName: lang.paint),
-  CategoryEntity(categoryName: lang.laundry),
-  CategoryEntity(categoryName: lang.furniture),
-  CategoryEntity(categoryName: lang.plumbing),
-];
+List<CategoryEntity> workCategories(AppLocalizations lang) => [
+      CategoryEntity(categoryName: lang.all),
+      CategoryEntity(categoryName: lang.cleaning),
+      CategoryEntity(categoryName: lang.repair),
+      CategoryEntity(categoryName: lang.paint),
+      CategoryEntity(categoryName: lang.laundry),
+      CategoryEntity(categoryName: lang.furniture),
+      CategoryEntity(categoryName: lang.plumbing),
+    ];

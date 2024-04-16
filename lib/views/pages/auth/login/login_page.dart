@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../data/storage/local_storage.dart';
+import '../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../data/tools/constants/strings/strings.dart';
 import '../../../../domains/entities/user/user_local_info.dart';
 import '../../base/base_page.dart';
@@ -16,7 +17,6 @@ import 'forgot_password/forgot_password_page.dart';
 import '../../../../data/tools/constants/style/fonts.dart';
 import '../../../../data/tools/constants/assets/icons.dart';
 import '../../../../data/tools/constants/style/colors.dart';
-import '../../../../data/tools/constants/language/getx_translation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,

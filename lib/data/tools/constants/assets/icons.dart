@@ -20,6 +20,7 @@ sealed class KTIcons {
   static const clean = "$assets/$icons/ic_clean.svg";
   static const clear = "$assets/$icons/ic_clear.svg";
   static const clock = "$assets/$icons/ic_clock.svg";
+  static const currentLocation = "$assets/$icons/ic_current_location.svg";
   static const delivery = "$assets/$icons/ic_delivery.svg";
   static const discount2 = "$assets/$icons/ic_discount_card2.svg";
   static const discount3 = "$assets/$icons/ic_discount_card3.svg";
@@ -46,7 +47,6 @@ sealed class KTIcons {
   static const helpCenter = "$assets/$icons/ic_help_center.svg";
   static const home = "$assets/$icons/ic_home.svg";
   static const homeActive = "$assets/$icons/ic_home_active.svg";
-  static const humo = "$assets/$icons/ic_humo.svg";
   static const incomingCall = "$assets/$icons/ic_incoming_call.svg";
   static const instagram = "$assets/$icons/ic_instagram.svg";
   static const inviteFriends = "$assets/$icons/ic_invite_friends.svg";
@@ -99,8 +99,8 @@ sealed class KTIcons {
   static const twitter = "$assets/$icons/ic_twitter.svg";
   static const unlike = "$assets/$icons/ic_unlike.svg";
   static const userLarge = "$assets/$icons/ic_user_large.svg";
-  static const uzcard = "$assets/$icons/ic_uzcard.svg";
   static const voiceMicrophone = "$assets/$icons/ic_voice_microphone.svg";
+  static const wallet = "$assets/$icons/ic_wallet.svg";
   static const webSite = "$assets/$icons/ic_web_site.svg";
   static const whatsApp = "$assets/$icons/ic_whats_app.svg";
 }

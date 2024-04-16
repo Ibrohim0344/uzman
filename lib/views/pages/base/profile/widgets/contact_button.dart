@@ -4,15 +4,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 
 class ContactButton extends StatelessWidget {
-  final String iconPath;
+  final String? iconPath;
+  final String? imagePath;
   final String title;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget? trailing;
 
   const ContactButton({
-    required this.iconPath,
     required this.title,
-    required this.onTap,
+    this.iconPath,
+    this.imagePath,
+    this.onTap,
     this.trailing,
     super.key,
   });
@@ -40,8 +42,13 @@ class ContactButton extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: ListTile(
-            contentPadding: const EdgeInsets.all(8),
-            leading: SvgPicture.asset(iconPath),
+            contentPadding: const EdgeInsets.all(12),
+            leading: iconPath != null
+                ? SvgPicture.asset(iconPath!)
+                : Image(
+                    width: 60,
+                    image: AssetImage(imagePath!),
+                  ),
             title: Text(title),
             trailing: trailing,
           ),

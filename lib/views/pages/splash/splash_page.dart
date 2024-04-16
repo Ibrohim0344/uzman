@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     final isAuthorized = LocalStorage.getUserStatus();
-    Future.delayed(const Duration(seconds: 3)).then(
+    Future.delayed(const Duration(seconds: 2)).then(
       (value) => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) =>
@@ -49,13 +49,10 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
             Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                chasing,
-                lines,
-                circle,
-              ],
+            SpinKitCircle(
+              size: 60,
+              duration: Duration(milliseconds: 1500),
+              color: KTColors.mainRed,
             ),
           ],
         ),
@@ -63,22 +60,3 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
-
-const chasing = SpinKitChasingDots(
-  color: KTColors.mainRed,
-  duration: Duration(milliseconds: 1500),
-);
-
-const lines = SpinKitSpinningLines(
-  color: KTColors.mainRed,
-  lineWidth: 4,
-  itemCount: 3,
-  size: 55,
-  duration: Duration(milliseconds: 1500),
-);
-
-const circle = SpinKitCircle(
-  size: 60,
-  duration: Duration(milliseconds: 1500),
-  color: KTColors.mainRed,
-);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../../data/tools/constants/assets/icons.dart';
-import '../../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../../widgets/main_button.dart';
@@ -39,7 +39,7 @@ class _AddNewCardState extends State<AddNewCard> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,

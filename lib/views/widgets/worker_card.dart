@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'worker_details/worker_detail_page.dart';
 import '../../data/tools/constants/assets/icons.dart';
 import '../../data/tools/constants/assets/images.dart';
-import '../../data/tools/constants/language/getx_translation.dart';
+import '../../data/tools/constants/l10n/app_localizations.dart';
 import '../../data/tools/constants/style/colors.dart';
 import '../../data/tools/constants/style/fonts.dart';
 import '../pages/base/chats/chat/chat_detail.dart';
-import '../pages/base/main/worker_details/worker_detail_page.dart';
 import 'open_page.dart';
 
 class WorkerCard extends StatelessWidget {
@@ -18,7 +18,7 @@ class WorkerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

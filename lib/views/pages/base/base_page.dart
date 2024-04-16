@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../data/tools/bottom_sheets/order_service_sheets.dart';
+import '../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../data/tools/constants/style/fonts.dart';
+import '../../widgets/map/google_map.dart';
+import '../../widgets/open_page.dart';
 import 'main/main_page.dart';
 import 'chats/chats_page.dart';
 import 'orders/orders_page.dart';
 import 'profile/profile_page.dart';
 import '../../../data/tools/constants/assets/icons.dart';
 import '../../../data/tools/constants/style/colors.dart';
-import '../../../data/tools/constants/language/getx_translation.dart';
 
 class BasePage extends StatefulWidget {
-  const BasePage({super.key});
+  final int? pageIndex;
+
+  const BasePage({this.pageIndex, super.key});
 
   @override
   State<BasePage> createState() => _BasePageState();
 }
 
 class _BasePageState extends State<BasePage> {
-  int currentIndex = 0;
+  late int currentIndex;
   late PageController controller;
   List<Widget> pages = const [
     MainPage(),
@@ -29,13 +34,15 @@ class _BasePageState extends State<BasePage> {
 
   @override
   void initState() {
-    super.initState();
+    currentIndex = widget.pageIndex ?? 0;
     controller = PageController(initialPage: currentIndex);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final size = MediaQuery.sizeOf(context);
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -48,13 +55,17 @@ class _BasePageState extends State<BasePage> {
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         onTap: (value) {
-          currentIndex = value;
-          controller.animateToPage(
-            currentIndex,
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.fastOutSlowIn,
-          );
-          setState(() {});
+          if (value != 2) {
+            currentIndex = value;
+            controller.animateToPage(
+              currentIndex > 2 ? --value : value,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.fastOutSlowIn,
+            );
+            setState(() {});
+          } else {
+            OrderServiceSheets.selectServiceCategory(context, size);
+          }
         },
         items: [
           BottomNavigationBarItem(
@@ -66,6 +77,11 @@ class _BasePageState extends State<BasePage> {
             icon: navbarIcon(KTIcons.document),
             activeIcon: navbarIcon(KTIcons.documentActive),
             label: lang.orders,
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(KTIcons.add),
+            activeIcon: SvgPicture.asset(KTIcons.add),
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: navbarIcon(KTIcons.chat),

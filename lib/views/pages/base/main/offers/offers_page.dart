@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../data/tools/constants/language/getx_translation.dart';
+import '../../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../../../../../data/tools/constants/style/colors.dart';
 import '../../../../../data/tools/constants/style/fonts.dart';
 import '../../../../../data/tools/extensions/int_extensions.dart';
@@ -11,7 +11,7 @@ class OffersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: KTColors.white,
@@ -75,7 +75,7 @@ class OffersPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   ],

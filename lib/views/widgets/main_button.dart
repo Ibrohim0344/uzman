@@ -10,6 +10,8 @@ class MainButton extends StatelessWidget {
   final double height;
   final double horizontalPadding;
   final bool hasElevation;
+  final bool isOutlined;
+  final double fontSize;
 
   const MainButton(
     this.text,
@@ -18,6 +20,8 @@ class MainButton extends StatelessWidget {
     this.horizontalPadding = 0,
     this.height = 52,
     this.hasElevation = false,
+    this.isOutlined = false,
+    this.fontSize = 16,
     super.key,
   });
 
@@ -28,7 +32,11 @@ class MainButton extends StatelessWidget {
         shadowColor: KTColors.purple.withOpacity(.5),
         elevation: hasElevation ? 4 : 0,
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        backgroundColor: KTColors.mainRed,
+        backgroundColor: isOutlined ? KTColors.white : KTColors.mainRed,
+        side: const BorderSide(
+          color: KTColors.mainRed,
+          width: 2,
+        ),
         fixedSize: Size(width, height),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(24)),
@@ -39,7 +47,10 @@ class MainButton extends StatelessWidget {
       child: Text(
         text,
         overflow: TextOverflow.ellipsis,
-        style: ktButtonTextStyle,
+        style: ktButtonTextStyle.copyWith(
+          color: isOutlined ? KTColors.mainRed : KTColors.white,
+          fontSize: fontSize,
+        ),
       ),
     );
   }

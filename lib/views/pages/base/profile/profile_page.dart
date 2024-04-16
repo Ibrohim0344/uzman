@@ -1,12 +1,17 @@
+import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 
+import '../../../../blocs/user/user_info_bloc.dart';
 import '../../../../data/storage/local_storage.dart';
+import '../../../../data/tools/constants/l10n/app_localizations.dart';
+import '../../../../data/tools/extensions/int_extensions.dart';
 import '../../../widgets/open_page.dart';
 import 'invite_friends/invite_friends.dart';
 import 'payment/payment_page.dart';
@@ -21,7 +26,6 @@ import 'widgets/my_list_tile.dart';
 import '../../../../data/tools/constants/style/fonts.dart';
 import '../../../../data/tools/constants/style/colors.dart';
 import '../../../../data/tools/constants/assets/icons.dart';
-import '../../../../data/tools/constants/language/getx_translation.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -73,11 +77,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     final size = MediaQuery.sizeOf(context);
     final imagePath = LocalStorage.getUser().imagePath;
-    final fullName = LocalStorage.getUser().fullName;
-    final email = LocalStorage.getUser().email;
 
     return Scaffold(
       backgroundColor: KTColors.white,
@@ -85,137 +87,146 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SafeArea(
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  const SizedBox(height: 50),
-                  Center(
-                    child: Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 65,
-                          backgroundColor: KTColors.secondaryLightBlue,
-                          backgroundImage: imagePath != null
-                              ? FileImage(File(imagePath))
-                              : null,
-                          child: imagePath == null
-                              ? SvgPicture.asset(
-                                  KTIcons.userLarge,
-                                  fit: BoxFit.cover,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                )
-                              : null,
-                        ),
-                        Positioned(
-                          left: 102,
-                          top: 100,
-                          child: GestureDetector(
-                            onTap: pickImage,
-                            child: SvgPicture.asset(KTIcons.editPicture),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Column(
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                const SizedBox(height: 50),
+                Center(
+                  child: Stack(
                     children: [
-                      Center(
-                        child: Text(
-                          "$fullName",
-                          style: ktBodyLargeStyle,
-                        ),
+                      CircleAvatar(
+                        radius: 65,
+                        backgroundColor: KTColors.secondaryLightBlue,
+                        backgroundImage: imagePath != null
+                            ? FileImage(File(imagePath))
+                            : null,
+                        child: imagePath == null
+                            ? SvgPicture.asset(
+                                KTIcons.userLarge,
+                                fit: BoxFit.cover,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                              )
+                            : null,
                       ),
-                      Text(
-                        "$email",
-                        textAlign: TextAlign.center,
-                        style: ktMediumStyle,
+                      Positioned(
+                        left: 102,
+                        top: 100,
+                        child: GestureDetector(
+                          onTap: pickImage,
+                          child: SvgPicture.asset(KTIcons.editPicture),
+                        ),
                       ),
                     ],
                   ),
-                  MyListTile(
-                    title: lang.editProfile,
-                    leading: SvgPicture.asset(KTIcons.profile2),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const EditPage()),
+                ),
+                const SizedBox(height: 20),
+                BlocBuilder<UserInfoBloc, UserInfoState>(
+                  builder: (context, state) {
+                    final userData = LocalStorage.getUser();
+                    String? fullName = userData.fullName;
+                    String? email = userData.email;
+                    log("{{{{{{{{{{{{{{{{{ BlocBuilder }}}}}}}}}}}}}}}}}");
+                    log("<<< $fullName >>>");
+                    log("<<< $email >>>");
+                    return Column(
+                      children: [
+                        Center(
+                          child: Text(
+                            "${state.fullName ?? fullName}",
+                            style: ktBodyLargeStyle,
+                          ),
+                        ),
+                        Text(
+                          "${state.email ?? email}",
+                          textAlign: TextAlign.center,
+                          style: ktMediumStyle,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+                10.gapY(),
+                const Divider(color: KTColors.border),
+                MyListTile(
+                  title: lang.editProfile,
+                  leading: SvgPicture.asset(KTIcons.profile2),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.notification,
-                    leading: SvgPicture.asset(KTIcons.notification),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () =>
-                        getTo(context, const NotificationSettingsPage()),
+                  onTap: () => getTo(context, const EditPage()),
+                ),
+                MyListTile(
+                  title: lang.notification,
+                  leading: SvgPicture.asset(KTIcons.notification),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.payment,
-                    leading: SvgPicture.asset(KTIcons.payment),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const PaymentPage()),
+                  onTap: () =>
+                      getTo(context, const NotificationSettingsPage()),
+                ),
+                MyListTile(
+                  title: lang.payment,
+                  leading: SvgPicture.asset(KTIcons.payment),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.security,
-                    leading: SvgPicture.asset(KTIcons.security),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const SecurityPage()),
+                  onTap: () => getTo(context, const PaymentPage()),
+                ),
+                MyListTile(
+                  title: lang.security,
+                  leading: SvgPicture.asset(KTIcons.security),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.language,
-                    leading: SvgPicture.asset(KTIcons.language),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const LanguagePage()),
+                  onTap: () => getTo(context, const SecurityPage()),
+                ),
+                MyListTile(
+                  title: lang.language,
+                  leading: SvgPicture.asset(KTIcons.language),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.privacyPolicy,
-                    leading: SvgPicture.asset(KTIcons.privacyPolicy),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const PrivacyPolicyPage()),
+                  onTap: () => getTo(context, const LanguagePage()),
+                ),
+                MyListTile(
+                  title: lang.privacyPolicy,
+                  leading: SvgPicture.asset(KTIcons.privacyPolicy),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.helpCenter,
-                    leading: SvgPicture.asset(KTIcons.helpCenter),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const HelpCenterPage()),
+                  onTap: () => getTo(context, const PrivacyPolicyPage()),
+                ),
+                MyListTile(
+                  title: lang.helpCenter,
+                  leading: SvgPicture.asset(KTIcons.helpCenter),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.inviteFriends,
-                    leading: SvgPicture.asset(KTIcons.inviteFriends),
-                    trailing: const Icon(
-                      CupertinoIcons.right_chevron,
-                      color: Colors.black,
-                    ),
-                    onTap: () => getTo(context, const InviteFriends()),
+                  onTap: () => getTo(context, const HelpCenterPage()),
+                ),
+                MyListTile(
+                  title: lang.inviteFriends,
+                  leading: SvgPicture.asset(KTIcons.inviteFriends),
+                  trailing: const Icon(
+                    CupertinoIcons.right_chevron,
+                    color: Colors.black,
                   ),
-                  MyListTile(
-                    title: lang.logout,
-                    textColor: KTColors.red,
-                    leading: SvgPicture.asset(KTIcons.logout),
-                    onTap: () => LogoutSheets.logoutSheet(context, size),
-                  ),
-                ],
-              ),
+                  onTap: () => getTo(context, const InviteFriends()),
+                ),
+                MyListTile(
+                  title: lang.logout,
+                  textColor: KTColors.red,
+                  leading: SvgPicture.asset(KTIcons.logout),
+                  onTap: () => LogoutSheets.logoutSheet(context, size),
+                ),
+              ],
             ),
           ),
         ),

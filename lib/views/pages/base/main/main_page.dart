@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../data/storage/local_storage.dart';
+import '../../../../data/tools/constants/l10n/app_localizations.dart';
 import '../orders/widgets/title_and_textbutton.dart';
 import 'category_detail/category_detail_page.dart';
 import 'widgets/ads_card.dart';
@@ -22,7 +23,6 @@ import 'popular_services/popular_services_page.dart';
 import '../../../../data/tools/constants/style/fonts.dart';
 import '../../../../data/tools/constants/style/colors.dart';
 import '../../../../data/tools/constants/assets/icons.dart';
-import '../../../../data/tools/constants/language/getx_translation.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final lang = AppLocalization();
+    final lang = AppLocalizations.of(context);
     final fullName = LocalStorage.getUser().fullName;
     final currentTime = DateTime.now().hour;
     final greeting = currentTime < 10
@@ -263,7 +263,7 @@ class _MainPageState extends State<MainPage> {
               textButton: lang.all,
               onPressed: getToPopularServices,
             ),
-            const MyActionChip(),
+            MyActionChip(lang),
             ...List.generate(
               5,
               (index) => const WorkerCard(),
@@ -286,7 +286,7 @@ class _MainPageState extends State<MainPage> {
         ),
       );
 
-  Widget titleText(String title, AppLocalization lang, VoidCallback getTo) =>
+  Widget titleText(String title, AppLocalizations lang, VoidCallback getTo) =>
       Padding(
         padding: const EdgeInsets.only(left: 16, right: 4),
         child: Row(

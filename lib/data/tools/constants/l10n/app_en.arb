@@ -1,4 +1,4 @@
-const langEn = {
+{
   "splashText1": "We provide professional service at a friendly price",
   "splashText2": "Best results and your satisfaction are our priority",
   "splashText3": "Let's make a wonderful change in your home",
@@ -17,11 +17,10 @@ const langEn = {
   "password": "Password",
   "confirmPassword": "Confirm password",
   "remember": "Remember",
-  "continue": "Continue",
+  "continueWord": "Continue",
   "enter": "Enter",
   "forgotPassword": "Forgot password",
-  "chooseResetPasswordOption":
-      "Choose which contact information we should use to reset the password",
+  "chooseResetPasswordOption": "Choose which contact information we should use to reset the password",
   "enterPhone": "Enter phone",
   "enterGmail": "Enter gmail",
   "code": "Code",
@@ -31,8 +30,7 @@ const langEn = {
   "createNewPassword": "Create new password",
   "createYourNewPassword": "Create your new password",
   "congratulations": "Congratulations!",
-  "successDialogDescription":
-      "Your account is ready to use. You will be redirected to the main page after a few seconds.",
+  "successDialogDescription": "Your account is ready to use. You will be redirected to the main page after a few seconds.",
   "goodMorning": "Good morning",
   "goodAfternoon": "Good afternoon",
   "goodEvening": "Good evening",
@@ -82,8 +80,7 @@ const langEn = {
   "recent": "Recent",
   "notFound": "Not found",
   "found": "Found",
-  "searchFail":
-      "Sorry, the keyword you entered was not found, please check again or search with a different keyword.",
+  "searchFail": "Sorry, the keyword you entered was not found, please check again or search with a different keyword.",
   "results": "Results",
   "search": "Search",
   "allServices": "All services",
@@ -99,15 +96,12 @@ const langEn = {
   "address": "Address",
   "viewViaGoogle": "View via Google",
   "noFutureBooking": "You have no upcoming bookings",
-  "createBooking":
-      "You have no upcoming bookings. Make a new reservation by clicking the button below",
+  "createBooking": "You have no upcoming bookings. Make a new reservation by clicking the button below",
   "newBooking": "New booking",
   "cancelOrder": "Cancellation of order",
   "yesCancelOrder": "Yes, Cancel order",
-  "sureCancelOrder":
-      "Are you sure you want to cancel your service reservation?",
-  "refund80":
-      "You can only get a refund of 80% of your payment according to our policy",
+  "sureCancelOrder": "Are you sure you want to cancel your service reservation?",
+  "refund80": "You can only get a refund of 80% of your payment according to our policy",
   "paymentMethods": "Payment methods",
   "choosePaymentMethod": "Choose a refund method (only 80% refund).",
   "paid": "Paid",
@@ -115,8 +109,7 @@ const langEn = {
   "enterPinCode": "Enter your PIN code",
   "enterPinCodeForCancel": "Enter your PIN to cancel",
   "bookingSuccessfullyCanceled": "Reservation successfully canceled!",
-  "willRefund80":
-      "You have successfully canceled your service reservation. 80% of the funds will be returned to your account",
+  "willRefund80": "You have successfully canceled your service reservation. 80% of the funds will be returned to your account",
   "calls": "Calls",
   "incoming": "Incoming",
   "outgoing": "Outgoing",
@@ -162,5 +155,5 @@ const langEn = {
   "customerService": "Customer service",
   "webSite": "Web-site",
   "sureLogout": "Are you sure you want to log out?",
-  "yesLogout": "Yes, logout",
-};
+  "yesLogout": "Yes, logout"
+}

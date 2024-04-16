@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'work_status.dart';
+import '../widgets/work_status.dart';
+
 
 class Canceled extends StatelessWidget {
   const Canceled({super.key});
